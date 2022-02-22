@@ -40,21 +40,23 @@ public class VideosManager
     {
         if (v == null)
         {
-            Debug.Log("video component is null");
+            Debug.LogError("video component is null");
             return;
         }
 
         if (currentVides)
         {
             currentVides.Stop();
+            if (v.targetTexture)
+                RenderTexture.ReleaseTemporary(v.targetTexture);
         }
 
+        var clip = v.clip;
         if (v.canSetPlaybackSpeed)
         {
             v.playbackSpeed = speed;
         }
-
-        v.targetCamera = videoCamera;
+        v.targetTexture = RenderTexture.GetTemporary((int)clip.width, (int)clip.height);
         v.frame = frame;
         v.Play();
 
