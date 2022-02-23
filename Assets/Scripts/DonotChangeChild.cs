@@ -49,7 +49,11 @@ public class DonotChangeChild : MonoBehaviour
             float localY = transform.localScale.y;
             float localZ = transform.localScale.z;
             if (localX == 0 || localY == 0 || localZ == 0)
+            {
+                tr.localScale = Vector3.zero;
                 return;
+            }
+
 
             float x = orScale[i].x / localX;
             float y = orScale[i].y / localY;
