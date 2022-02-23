@@ -16,6 +16,10 @@ public class DonotChangeChild : MonoBehaviour
 
     protected void OnEnable()
     {
+        orT.Clear();
+        orPos.Clear();
+        orScale.Clear();
+        orRotation.Clear();
         var result = transform.GetComponentsInChildren<Transform>();
         foreach (var tr in result)
         {
