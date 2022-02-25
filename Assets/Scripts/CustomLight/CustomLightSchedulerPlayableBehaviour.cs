@@ -11,12 +11,12 @@ namespace CustomTimeline
     /// <summary>
     /// 自定义灯光生命周期逻辑
     /// </summary>
-    public class LightSchedulerPlayableBehaviour : PlayableBehaviour
+    public class CustomLightSchedulerPlayableBehaviour : PlayableBehaviour
     {
         public override void ProcessFrame(Playable playable, FrameData info, object playerData)
         {
             var light = playerData as Light;
-            CustomLightPlayableData blendData = new CustomLightPlayableData();
+            CustomLightPlayableData blendData = new CustomLightPlayableData() { intensity = 0};
             for (int i = 0; i < playable.GetInputCount(); i++)
             {
                 var input = playable.GetInput(i);
@@ -24,19 +24,31 @@ namespace CustomTimeline
                     continue;
 
                 float wight = playable.GetInputWeight(i);
+                if (wight <= 0) continue;
                 var scriptPlayable = (ScriptPlayable<CustomLightPlayableData>)input;
                 CustomLightPlayableData data = scriptPlayable.GetBehaviour();
-                BlendData(blendData, data, wight);
+                BlendData(blendData, data, wight, data.interpolationShortDir);
             }
             SetLight(light, blendData);
         }
 
-        public void BlendData(CustomLightPlayableData result, CustomLightPlayableData input, float wight)
+        private Vector3 f = new Vector3(360f, 360f, 360f);
+        public void BlendData(CustomLightPlayableData result, CustomLightPlayableData input, float wight, bool interpolationShortDir = true)
         {
             result.color += wight * input.color;
             result.position += wight * input.position;
             result.intensity += wight * input.intensity;
-            Vector3 r = result.rotation.eulerAngles + input.rotation.eulerAngles * wight;
+            var source = input.rotation.eulerAngles;
+            if (interpolationShortDir)
+            {                
+                if (source.x > 180)
+                    source.x -= 360;
+                if (source.y > 180)
+                    source.y -= 360;
+                if (source.z > 180)
+                    source.z -= 360;
+            }
+            Vector3 r = result.rotation.eulerAngles + source * wight;
             result.rotation = Quaternion.Euler(r.x, r.y, r.z);
         }
 

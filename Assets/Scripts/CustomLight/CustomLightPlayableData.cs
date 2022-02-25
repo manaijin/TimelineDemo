@@ -1,8 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using UnityEngine;
 using UnityEngine.Playables;
 
@@ -24,6 +20,9 @@ namespace CustomTimeline
         public Quaternion rotation = Quaternion.identity;
 
         [Tooltip("灯光强度")]
-        public float intensity = 0;
+        public float intensity = 1;
+
+        [Tooltip("旋转角度以最短方向插值处理")]
+        public bool interpolationShortDir = true;
     }
 }

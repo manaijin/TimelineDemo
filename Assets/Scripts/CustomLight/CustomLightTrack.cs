@@ -19,7 +19,7 @@ namespace CustomTimeline
                 var asset = clip.asset as CustomLightAsset;
                 if (!asset) continue;
             }
-            return ScriptPlayable<LightSchedulerPlayableBehaviour>.Create(graph, inputCount);
+            return ScriptPlayable<CustomLightSchedulerPlayableBehaviour>.Create(graph, inputCount);
         }
 
         public override void GatherProperties(PlayableDirector director, IPropertyCollector driver)

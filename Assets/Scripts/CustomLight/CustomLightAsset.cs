@@ -25,7 +25,7 @@ namespace CustomTimeline
         {
             get
             {
-                return ClipCaps.Blending | ClipCaps.ClipIn | ClipCaps.SpeedMultiplier;
+                return ClipCaps.Blending | ClipCaps.ClipIn | ClipCaps.SpeedMultiplier | ClipCaps.Looping;
             }
         }
 
