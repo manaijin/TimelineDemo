@@ -4,11 +4,11 @@ using UnityEngine;
 using UnityEngine.UI;
 
 /// <summary>
-/// 剧情对话组件
+/// 鍓ф儏瀵硅瘽UI
 /// </summary>
 public class UIDialogue : MonoBehaviour
 {
-    #region UI节点
+    #region UI鑺傜偣
     [SerializeField] private RawImage imgBg;
     [SerializeField] private Button btnSkip;
     [SerializeField] private Text txtDialogue;

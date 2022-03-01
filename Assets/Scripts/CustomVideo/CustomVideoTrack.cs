@@ -12,6 +12,20 @@ namespace CustomTimeline
     {
         public override Playable CreateTrackMixer(PlayableGraph graph, GameObject go, int inputCount)
         {
+            foreach (var clip in GetClips())
+            {
+                var asset = clip.asset as CustomVideoPlayableAsset;
+                if (asset != null && asset.videoClip != null && asset.videoClip.Length > 0)
+                {
+                    if (asset.inited) continue;
+                    clip.duration = asset.videoClip[0].frameCount / 60;
+                    asset.inited = true;
+                }
+                else
+                {
+                    clip.duration = 100;
+                }
+            }
             return ScriptPlayable<CustomVideoSchedulerPlayableBehaviour>.Create(graph, inputCount);
         }
     }

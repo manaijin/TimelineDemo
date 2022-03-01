@@ -5,13 +5,13 @@ using UnityEngine.EventSystems;
 
 [ExecuteAlways]
 /// <summary>
-/// UI节点不随父节点变化
+/// 瀛愯妭鐐逛笉闅忕埗鑺傜偣鍙樺寲
 /// </summary>
 public class DonotChangeChild : MonoBehaviour
 {
     public List<Transform> orT = new List<Transform>();
     public List<Vector3> orPos = new List<Vector3>();
-    public List<Vector3> orScale = new List<Vector3>();// 需要注意scale为0的处理
+    public List<Vector3> orScale = new List<Vector3>();
     public List<Quaternion> orRotation = new List<Quaternion>();
 
     protected void OnEnable()
