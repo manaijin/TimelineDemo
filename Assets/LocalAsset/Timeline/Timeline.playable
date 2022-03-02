@@ -743,6 +743,22 @@ MonoBehaviour:
     rotation: {x: 0.40821806, y: -0.2345697, z: 0.109381706, w: 0.875426}
     intensity: 1
     interpolationShortDir: 1
+--- !u!114 &1830479017777729257
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a7c3a7b3153270740b107c1a719c7e39, type: 3}
+  m_Name: CustomVideoPlayableAsset
+  m_EditorClassIdentifier: 
+  videoClip: []
+  startFrame: 0
+  playSpeed: 1
+  inited: 1
 --- !u!114 &5125816096184589392
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -825,7 +841,7 @@ MonoBehaviour:
     m_Start: 0
     m_ClipIn: 0
     m_Asset: {fileID: -4324522188838296279}
-    m_Duration: 12.366666666666667
+    m_Duration: 7.7
     m_TimeScale: 1
     m_ParentTrack: {fileID: 8038893166244406500}
     m_EaseInDuration: 0
@@ -853,6 +869,39 @@ MonoBehaviour:
         weightedMode: 0
         inWeight: 0
         outWeight: 0
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    m_MixOutCurve:
+      serializedVersion: 2
+      m_Curve: []
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    m_BlendInCurveMode: 0
+    m_BlendOutCurveMode: 0
+    m_ExposedParameterNames: []
+    m_AnimationCurves: {fileID: 0}
+    m_Recordable: 0
+    m_PostExtrapolationMode: 0
+    m_PreExtrapolationMode: 0
+    m_PostExtrapolationTime: 0
+    m_PreExtrapolationTime: 0
+    m_DisplayName: CustomVideoPlayableAsset
+  - m_Version: 1
+    m_Start: 7.7
+    m_ClipIn: 0
+    m_Asset: {fileID: 1830479017777729257}
+    m_Duration: 0.9999999999999991
+    m_TimeScale: 1
+    m_ParentTrack: {fileID: 8038893166244406500}
+    m_EaseInDuration: 0
+    m_EaseOutDuration: 0
+    m_BlendInDuration: -1
+    m_BlendOutDuration: -1
+    m_MixInCurve:
+      serializedVersion: 2
+      m_Curve: []
       m_PreInfinity: 2
       m_PostInfinity: 2
       m_RotationOrder: 4

@@ -21,10 +21,6 @@ namespace CustomTimeline
                     clip.duration = asset.videoClip[0].frameCount / 60;
                     asset.inited = true;
                 }
-                else
-                {
-                    clip.duration = 100;
-                }
             }
             return ScriptPlayable<CustomVideoSchedulerPlayableBehaviour>.Create(graph, inputCount);
         }
