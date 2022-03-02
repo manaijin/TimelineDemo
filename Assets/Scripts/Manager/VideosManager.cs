@@ -211,7 +211,6 @@ public class VideosManager
                 if (video == null) continue;
                 if (video.clip == clip)
                 {
-                    Debug.Log(clip);
                     ResetPlayVideo(video);
                     video.transform.SetParent(hideNode);
                     currentVides.Remove(video);

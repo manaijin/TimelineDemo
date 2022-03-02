@@ -22,7 +22,7 @@ namespace CustomTimeline
                     asset.inited = true;
                 }
             }
-            return ScriptPlayable<CustomVideoSchedulerPlayableBehaviour>.Create(graph, inputCount);
+            return ScriptPlayable<CustomVideoPlayableData>.Create(graph, inputCount);
         }
     }
 }
