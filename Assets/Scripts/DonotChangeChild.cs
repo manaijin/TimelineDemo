@@ -20,12 +20,16 @@ public class DonotChangeChild : MonoBehaviour
         orPos.Clear();
         orScale.Clear();
         orRotation.Clear();
-        var result = transform.GetComponentsInChildren<Transform>();
-        foreach (var tr in result)
+
+        // 只处理一级子节点
+        int count = transform.childCount;
+        for (int i = 0; i < count; i++)
         {
-            if (tr == transform)
-                continue;
-            orT.Add(tr);
+            orT.Add(transform.GetChild(i));
+        }
+
+        foreach (var tr in orT)
+        {
             orPos.Add(tr.position);
             orRotation.Add(tr.rotation);
             var scale1 = transform.localScale;
