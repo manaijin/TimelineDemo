@@ -42,18 +42,13 @@ public class UITimeline : MonoBehaviour
         mat.SetFloat("_BlendParam2", blendWeight2);
     }
 
-    public void MaskVideo(RenderTexture r1, RenderTexture r2, Rect[] uvs = null, Texture[] masks = null)
+    public void MaskVideo(RenderTexture r1, RenderTexture r2, Texture[] masks = null)
     {
         videoBlend.gameObject.SetActive(false);
         mask1.gameObject.SetActive(true);
         mask2.gameObject.SetActive(true);
         video1.texture = r1;
         video2.texture = r2;
-        if (uvs != null && uvs.Length >= 2)
-        {
-            video1.uvRect = uvs[0];
-            video2.uvRect = uvs[1];
-        }
 
         if (masks != null && masks.Length >= 2)
         {

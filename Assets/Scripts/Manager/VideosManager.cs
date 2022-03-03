@@ -144,7 +144,7 @@ public class VideosManager
                 break;
         }
 
-        v.frame = param.startFrames;
+        v.time = param.startTime;
     }
 
     /// <summary>
@@ -278,9 +278,9 @@ public enum e_VideoTarget
 public class VideoClipParam
 {
     /// <summary>
-    /// 起始帧数
+    /// 起始时间
     /// </summary>
-    public long startFrames = 0;
+    public double startTime = 0;
 
     /// <summary>
     /// 播放速度

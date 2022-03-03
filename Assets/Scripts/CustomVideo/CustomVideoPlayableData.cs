@@ -12,14 +12,11 @@ namespace CustomTimeline
         [Tooltip("Video 资源")]
         public VideoClip[] videoClip;
 
-        [Tooltip("起始帧")]
-        public int[] startFrame;
+        [Tooltip("Video起始时间")]
+        public double[] startTime;
 
         [Tooltip("播放速度")]
         public float[] playSpeed;
-
-        [Tooltip("遮罩uv范围")]
-        public Rect[] uvRects;
 
         [Tooltip("遮罩纹理")]
         public Texture[] masks;
@@ -50,11 +47,10 @@ namespace CustomTimeline
             {
                 var p = new VideoClipParam();
                 p.speed = playSpeed[i];
-                p.startFrames = startFrame[i];
+                p.startTime = startTime[i];
                 input[i] = p;
             }
             PlayVideo(input);
-
         }
 
         public override void OnBehaviourPause(Playable playable, FrameData info)
@@ -85,7 +81,7 @@ namespace CustomTimeline
                 VideosManager.Instance.PlayVideos(videoClip, input);
                 var rts = VideosManager.Instance.GetAllVideoRenderTexture();
                 var ui = UIManager.Instance.GetUI("UITimeline") as UITimeline;
-                ui.MaskVideo(rts[0], rts[1], uvRects, masks);
+                ui.MaskVideo(rts[0], rts[1], masks);
             }
             else if (target == e_VideoOutputType.DoubleBlend)
             {

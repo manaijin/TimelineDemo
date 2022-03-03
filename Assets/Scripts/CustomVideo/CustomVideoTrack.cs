@@ -18,6 +18,7 @@ namespace CustomTimeline
                 if (asset != null && asset.videoClip != null && asset.videoClip.Length > 0)
                 {
                     if (asset.inited) continue;
+                    if (asset.videoClip[0]) continue;
                     clip.duration = asset.videoClip[0].frameCount / 60;
                     asset.inited = true;
                 }

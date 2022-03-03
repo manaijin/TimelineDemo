@@ -15,17 +15,14 @@ namespace CustomTimeline
         [Tooltip("Video 资源")]
         public VideoClip[] videoClip;
 
-        [Tooltip("开始帧")]
-        public int[] startFrame;
+        [Tooltip("Video开始时间")]
+        public double[] startTime;
 
         [Tooltip("播放速度")]
         public float[] playSpeed;
 
         [Tooltip("遮罩纹理")]
         public Texture[] masks;
-
-        [Tooltip("遮罩uv范围")]
-        public Rect[] uvRects;
 
         [Tooltip("混合周期(s)")]
         public float cycle = 5;
@@ -48,9 +45,8 @@ namespace CustomTimeline
             var playableBehaviour = playable.GetBehaviour();
             playableBehaviour.target = this.target;
             playableBehaviour.videoClip = this.videoClip;
-            playableBehaviour.startFrame = this.startFrame;
+            playableBehaviour.startTime = this.startTime;
             playableBehaviour.playSpeed = this.playSpeed;
-            playableBehaviour.uvRects = this.uvRects;
             playableBehaviour.masks = this.masks;
             playableBehaviour.cycle = this.cycle;
 

@@ -9,9 +9,8 @@ public class CustomVideoInspector : Editor
 {
     SerializedProperty targetProp;
     SerializedProperty videoClipProp;
-    SerializedProperty startFrameProp;
+    SerializedProperty startTimeProp;
     SerializedProperty playSpeedProp;
-    SerializedProperty uvRectsProp;
     SerializedProperty masksProp;
     SerializedProperty cycleProp;
 
@@ -21,9 +20,8 @@ public class CustomVideoInspector : Editor
     {
         targetProp = serializedObject.FindProperty("target");
         videoClipProp = serializedObject.FindProperty("videoClip");
-        startFrameProp = serializedObject.FindProperty("startFrame");
+        startTimeProp = serializedObject.FindProperty("startTime");
         playSpeedProp = serializedObject.FindProperty("playSpeed");
-        uvRectsProp = serializedObject.FindProperty("uvRects");
         masksProp = serializedObject.FindProperty("masks");
         cycleProp = serializedObject.FindProperty("cycle");
         options = new GUILayoutOption[2] { GUILayout.Width(100), GUILayout.Height(5) };
@@ -34,7 +32,7 @@ public class CustomVideoInspector : Editor
 
         DrawProperty(targetProp);
         DrawProperty(videoClipProp);
-        DrawProperty(startFrameProp);
+        DrawProperty(startTimeProp);
         DrawProperty(playSpeedProp);
 
         switch (targetProp.enumValueIndex)
@@ -48,7 +46,6 @@ public class CustomVideoInspector : Editor
                 break;
 
             case (int)e_VideoOutputType.DoubleMask:
-                DrawProperty(uvRectsProp);
                 DrawProperty(masksProp);
                 break;
         }
