@@ -13,6 +13,7 @@ public class CustomVideoInspector : Editor
     SerializedProperty playSpeedProp;
     SerializedProperty uvRectsProp;
     SerializedProperty masksProp;
+    SerializedProperty cycleProp;
 
     private GUILayoutOption[] options;
 
@@ -24,10 +25,13 @@ public class CustomVideoInspector : Editor
         playSpeedProp = serializedObject.FindProperty("playSpeed");
         uvRectsProp = serializedObject.FindProperty("uvRects");
         masksProp = serializedObject.FindProperty("masks");
+        cycleProp = serializedObject.FindProperty("cycle");
         options = new GUILayoutOption[2] { GUILayout.Width(100), GUILayout.Height(5) };
     }
     public override void OnInspectorGUI()
     {
+        serializedObject.Update();
+
         DrawProperty(targetProp);
         DrawProperty(videoClipProp);
         DrawProperty(startFrameProp);
@@ -40,7 +44,7 @@ public class CustomVideoInspector : Editor
                 break;
 
             case (int)e_VideoOutputType.DoubleBlend:
-
+                DrawProperty(cycleProp);
                 break;
 
             case (int)e_VideoOutputType.DoubleMask:
@@ -48,6 +52,8 @@ public class CustomVideoInspector : Editor
                 DrawProperty(masksProp);
                 break;
         }
+
+        serializedObject.ApplyModifiedProperties();
     }
 
     private void DrawProperty(SerializedProperty p)

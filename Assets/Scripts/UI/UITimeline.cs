@@ -23,11 +23,30 @@ public class UITimeline : MonoBehaviour
         UIManager.Instance.RegistUI("UITimeline", this);
     }
 
-    public void BlendMaskVideo(RenderTexture r1, RenderTexture r2, Rect[] uvs = null, Texture[] masks = null)
+    public void BlendMask(RenderTexture r1, RenderTexture r2, float blendWeight1, float blendWeight2)
+    {
+        videoBlend.gameObject.SetActive(true);
+        mask1.gameObject.SetActive(false);
+        mask2.gameObject.SetActive(false);
+        var mat = videoBlend.material;
+        mat.SetTexture("_MainTex", r1);
+        mat.SetTexture("_MainTex2", r2);
+        mat.SetFloat("_BlendParam", blendWeight1);
+        mat.SetFloat("_BlendParam2", blendWeight2);
+    }
+
+    public void SetBlendWeight(float blendWeight1, float blendWeight2)
+    {
+        var mat = videoBlend.material;
+        mat.SetFloat("_BlendParam", blendWeight1);
+        mat.SetFloat("_BlendParam2", blendWeight2);
+    }
+
+    public void MaskVideo(RenderTexture r1, RenderTexture r2, Rect[] uvs = null, Texture[] masks = null)
     {
         videoBlend.gameObject.SetActive(false);
         mask1.gameObject.SetActive(true);
-        mask2.gameObject.SetActive(true);        
+        mask2.gameObject.SetActive(true);
         video1.texture = r1;
         video2.texture = r2;
         if (uvs != null && uvs.Length >= 2)

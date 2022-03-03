@@ -18,13 +18,28 @@ namespace CustomTimeline
         [Tooltip("播放速度")]
         public float[] playSpeed;
 
-
-
         [Tooltip("遮罩uv范围")]
         public Rect[] uvRects;
 
         [Tooltip("遮罩纹理")]
         public Texture[] masks;
+
+        [Tooltip("混合周期(s)")]
+        public float cycle = 5;
+
+
+        public override void PrepareFrame(Playable playable, FrameData info)
+        {
+            if (!Application.isPlaying) return;
+            if (target == e_VideoOutputType.DoubleBlend)
+            {
+                var ui = UIManager.Instance.GetUI("UITimeline") as UITimeline;
+                if (!ui) return;
+                double time = playable.GetTime();
+                float weight = Mathf.Sin((float)time / cycle * Mathf.PI * 2) * 0.5f + 0.5f;
+                ui.SetBlendWeight(weight, 1 - weight);
+            }
+        }
 
         public override void OnBehaviourPlay(Playable playable, FrameData info)
         {
@@ -38,32 +53,50 @@ namespace CustomTimeline
                 p.startFrames = startFrame[i];
                 input[i] = p;
             }
-            VideosManager.Instance.PlayVideos(videoClip, input);
-            var rts = VideosManager.Instance.GetAllVideoRenderTexture();
-            if (rts == null)
-            {
-                Debug.LogError("rts is null");
-                return;
-            }
-            if (target == e_VideoOutputType.DoubleMask)
-            {
-                var ui = UIManager.Instance.GetUI("UITimeline") as UITimeline;
-                ui.BlendMaskVideo(rts[0], rts[1], uvRects, masks);
-            }
+            PlayVideo(input);
+
         }
 
         public override void OnBehaviourPause(Playable playable, FrameData info)
         {
             if (!Application.isPlaying) return;
-            VideosManager.Instance.PauseAllVideos();
+            RecoveryPlayer();
         }
 
         public override void OnPlayableDestroy(Playable playable)
         {
             if (!Application.isPlaying) return;
+            RecoveryPlayer();
+        }
+
+        private void RecoveryPlayer()
+        {
+            if (videoClip == null) return;
             foreach (var clip in videoClip)
             {
                 VideosManager.Instance.RecoveryVideoByClip(clip);
+            }
+        }
+
+        private void PlayVideo(VideoClipParam[] input)
+        {
+            if (target == e_VideoOutputType.DoubleMask)
+            {
+                VideosManager.Instance.PlayVideos(videoClip, input);
+                var rts = VideosManager.Instance.GetAllVideoRenderTexture();
+                var ui = UIManager.Instance.GetUI("UITimeline") as UITimeline;
+                ui.MaskVideo(rts[0], rts[1], uvRects, masks);
+            }
+            else if (target == e_VideoOutputType.DoubleBlend)
+            {
+                VideosManager.Instance.PlayVideos(videoClip, input);
+                var rts = VideosManager.Instance.GetAllVideoRenderTexture();
+                var ui = UIManager.Instance.GetUI("UITimeline") as UITimeline;
+                ui.BlendMask(rts[0], rts[1], 1, 1);
+            }
+            else if (target == e_VideoOutputType.Single)
+            {
+
             }
         }
     }

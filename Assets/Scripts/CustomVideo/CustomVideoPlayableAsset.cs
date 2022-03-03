@@ -27,6 +27,9 @@ namespace CustomTimeline
         [Tooltip("遮罩uv范围")]
         public Rect[] uvRects;
 
+        [Tooltip("混合周期(s)")]
+        public float cycle = 5;
+
 #if UNITY_EDITOR
         public bool inited = false;
 #endif
@@ -43,11 +46,13 @@ namespace CustomTimeline
             var playable =  ScriptPlayable<CustomVideoPlayableData>.Create(graph);
             
             var playableBehaviour = playable.GetBehaviour();
+            playableBehaviour.target = this.target;
             playableBehaviour.videoClip = this.videoClip;
             playableBehaviour.startFrame = this.startFrame;
             playableBehaviour.playSpeed = this.playSpeed;
             playableBehaviour.uvRects = this.uvRects;
             playableBehaviour.masks = this.masks;
+            playableBehaviour.cycle = this.cycle;
 
             return playable;
         }
