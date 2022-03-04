@@ -1,3 +1,4 @@
+using CustomTimeline;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -15,15 +16,29 @@ public class UITimeline : MonoBehaviour
     [SerializeField] private RawImage video2;
     [SerializeField] private RawImage mask1;
     [SerializeField] private RawImage mask2;
+    [SerializeField] private Image forwardWindow;
     [SerializeField] private UIDialogue nodeDiglogue;
     #endregion
+
+    private e_VideoOutputType mode;
+    private float speed = 0.5f;
 
     public void Awake()
     {
         UIManager.Instance.RegistUI("UITimeline", this);
+        forwardWindow.gameObject.SetActive(true);
     }
 
-    public void BlendMask(RenderTexture r1, RenderTexture r2, float blendWeight1, float blendWeight2)
+    private void FixedUpdate()
+    {
+        if (mode == e_VideoOutputType.DoubleMask)
+        {
+            mask1.transform.Rotate(Vector3.forward, speed);
+            mask2.transform.Rotate(Vector3.forward, speed);
+        }
+    }
+
+    public void BlendVideo(RenderTexture r1, RenderTexture r2, float blendWeight1, float blendWeight2)
     {
         videoBlend.gameObject.SetActive(true);
         mask1.gameObject.SetActive(false);
@@ -33,13 +48,7 @@ public class UITimeline : MonoBehaviour
         mat.SetTexture("_MainTex2", r2);
         mat.SetFloat("_BlendParam", blendWeight1);
         mat.SetFloat("_BlendParam2", blendWeight2);
-    }
-
-    public void SetBlendWeight(float blendWeight1, float blendWeight2)
-    {
-        var mat = videoBlend.material;
-        mat.SetFloat("_BlendParam", blendWeight1);
-        mat.SetFloat("_BlendParam2", blendWeight2);
+        mode = e_VideoOutputType.DoubleBlend;
     }
 
     public void MaskVideo(RenderTexture r1, RenderTexture r2, Texture[] masks = null)
@@ -54,6 +63,17 @@ public class UITimeline : MonoBehaviour
         {
             mask1.texture = masks[0];
             mask2.texture = masks[1];
+            mask1.SetNativeSize();
+            mask2.SetNativeSize();
         }
+
+        mode = e_VideoOutputType.DoubleMask;
+    }
+
+    public void SetBlendWeight(float blendWeight1, float blendWeight2)
+    {
+        var mat = videoBlend.material;
+        mat.SetFloat("_BlendParam", blendWeight1);
+        mat.SetFloat("_BlendParam2", blendWeight2);
     }
 }

@@ -750,6 +750,30 @@ PrefabInstance:
       propertyPath: m_Name
       value: TimelineUI
       objectReference: {fileID: 0}
+    - target: {fileID: 5486700358775032667, guid: c1a2dbe053488b747b5ccbb43456d369, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6678627605594468882, guid: c1a2dbe053488b747b5ccbb43456d369, type: 3}
+      propertyPath: m_Text
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 7743437228314293632, guid: c1a2dbe053488b747b5ccbb43456d369, type: 3}
+      propertyPath: side
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7743437228314293632, guid: c1a2dbe053488b747b5ccbb43456d369, type: 3}
+      propertyPath: radius
+      value: 1000
+      objectReference: {fileID: 0}
+    - target: {fileID: 7743437228314293632, guid: c1a2dbe053488b747b5ccbb43456d369, type: 3}
+      propertyPath: spaceCoff
+      value: 2.04
+      objectReference: {fileID: 0}
+    - target: {fileID: 8506125931094408080, guid: c1a2dbe053488b747b5ccbb43456d369, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 2080
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c1a2dbe053488b747b5ccbb43456d369, type: 3}
 --- !u!224 &1667242366 stripped

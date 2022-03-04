@@ -627,89 +627,6 @@ MonoBehaviour:
   - {fileID: 2800000, guid: 702400b215fbe204286bd6b308fed179, type: 3}
   cycle: 10
   inited: 1
---- !u!114 &-3336641719313063658
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: cce62f22eaf68f64e81d9d8a6e819f87, type: 3}
-  m_Name: Custom Video Track (1)
-  m_EditorClassIdentifier: 
-  m_Version: 3
-  m_AnimClip: {fileID: 0}
-  m_Locked: 0
-  m_Muted: 1
-  m_CustomPlayableFullTypename: 
-  m_Curves: {fileID: 0}
-  m_Parent: {fileID: 11400000}
-  m_Children: []
-  m_Clips:
-  - m_Version: 1
-    m_Start: 0
-    m_ClipIn: 0
-    m_Asset: {fileID: -423683264041572257}
-    m_Duration: 90.05
-    m_TimeScale: 1
-    m_ParentTrack: {fileID: -3336641719313063658}
-    m_EaseInDuration: 0
-    m_EaseOutDuration: 0
-    m_BlendInDuration: -1
-    m_BlendOutDuration: -1
-    m_MixInCurve:
-      serializedVersion: 2
-      m_Curve: []
-      m_PreInfinity: 2
-      m_PostInfinity: 2
-      m_RotationOrder: 4
-    m_MixOutCurve:
-      serializedVersion: 2
-      m_Curve: []
-      m_PreInfinity: 2
-      m_PostInfinity: 2
-      m_RotationOrder: 4
-    m_BlendInCurveMode: 0
-    m_BlendOutCurveMode: 0
-    m_ExposedParameterNames: []
-    m_AnimationCurves: {fileID: 0}
-    m_Recordable: 0
-    m_PostExtrapolationMode: 0
-    m_PreExtrapolationMode: 0
-    m_PostExtrapolationTime: 0
-    m_PreExtrapolationTime: 0
-    m_DisplayName: CustomVideoPlayableAsset
-  m_Markers:
-    m_Objects: []
---- !u!114 &-423683264041572257
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a7c3a7b3153270740b107c1a719c7e39, type: 3}
-  m_Name: CustomVideoPlayableAsset(Clone)(Clone)
-  m_EditorClassIdentifier: 
-  target: 2
-  videoClip:
-  - {fileID: 32900000, guid: b2abd68587755324f86845373ce4e172, type: 3}
-  - {fileID: 32900000, guid: ad3503101b738b84d9cc6e88041998a0, type: 3}
-  startTime:
-  - 0
-  - 0
-  playSpeed:
-  - 1
-  - 1
-  masks:
-  - {fileID: 2800000, guid: 702400b215fbe204286bd6b308fed179, type: 3}
-  - {fileID: 2800000, guid: f9221f8682b5fb94692455b5f8ec8406, type: 3}
-  cycle: 5
-  inited: 1
 --- !u!114 &11400000
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -728,7 +645,6 @@ MonoBehaviour:
   - {fileID: -8189759161239540682}
   - {fileID: 295477521681570888}
   - {fileID: -6708942512739721065}
-  - {fileID: -3336641719313063658}
   m_FixedDuration: 0
   m_EditorSettings:
     m_Framerate: 60
@@ -942,7 +858,7 @@ MonoBehaviour:
   m_Children: []
   m_Clips:
   - m_Version: 1
-    m_Start: 5
+    m_Start: 1.43333333333333
     m_ClipIn: 0
     m_Asset: {fileID: -4324522188838296279}
     m_Duration: 38
@@ -975,7 +891,7 @@ MonoBehaviour:
     m_PreExtrapolationTime: 0
     m_DisplayName: CustomVideoPlayableAsset
   - m_Version: 1
-    m_Start: 43
+    m_Start: 39.43333333333333
     m_ClipIn: 0
     m_Asset: {fileID: -6710429400041303574}
     m_Duration: 36.86666666666666

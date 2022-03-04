@@ -88,7 +88,7 @@ namespace CustomTimeline
                 VideosManager.Instance.PlayVideos(videoClip, input);
                 var rts = VideosManager.Instance.GetAllVideoRenderTexture();
                 var ui = UIManager.Instance.GetUI("UITimeline") as UITimeline;
-                ui.BlendMask(rts[0], rts[1], 1, 1);
+                ui.BlendVideo(rts[0], rts[1], 1, 1);
             }
             else if (target == e_VideoOutputType.Single)
             {

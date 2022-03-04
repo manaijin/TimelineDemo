@@ -12,10 +12,10 @@ public class RoseCurve : Image
     public int n = 3;
 
 
-    private void FixedUpdate()
-    {
-        SetVerticesDirty();
-    }
+    //private void FixedUpdate()
+    //{
+    //    SetVerticesDirty();
+    //}
 
     protected override void OnPopulateMesh(VertexHelper vh)
     {
