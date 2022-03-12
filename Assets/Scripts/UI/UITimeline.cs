@@ -17,7 +17,7 @@ public class UITimeline : MonoBehaviour
     [SerializeField] private RawImage mask1;
     [SerializeField] private RawImage mask2;
     [SerializeField] private Image forwardWindow;
-    [SerializeField] private UIDialogue nodeDiglogue;
+    [SerializeField] public UIDialogue nodeDiglogue;
     #endregion
 
     private e_VideoOutputType mode;

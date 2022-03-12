@@ -4,7 +4,7 @@ using UnityEngine.UI;
 public class CircleText : BaseMeshEffect
 {
     public int radius = 100;
-    public float spaceCoff = 1f;
+    public float spaceCoff = 0.2f;
     public CenterSide side = CenterSide.Bottom;
 
     public override void ModifyMesh(VertexHelper vh)

@@ -14,9 +14,10 @@ public class UIDialogue : MonoBehaviour
     [SerializeField] private Text txtDialogue;
     #endregion
 
-    private List<string> disloghueList = new List<string>() { "可以逃跑,可以哭泣,但不可放弃", "别害怕，抬起头来，因为你并没有做错什么" };
-    private float duration = 1f;
+    private List<string> disloghueList = new List<string>();
+    private float duration = 0.5f;
     private float dt = 0f;
+    private bool isStopping = false;
 
     private void Start()
     {
@@ -24,18 +25,27 @@ public class UIDialogue : MonoBehaviour
     }
 
     private void Update()
-    {
-        var length = txtDialogue.text.Length;
+    {        
         if (disloghueList.Count == 0) return;
         var content = disloghueList[0];
-        if (content.Length <= length)
+        var length = txtDialogue.text.Length;
+        if (content.Length <= length && !isStopping)
         {
             disloghueList.RemoveAt(0);
-            txtDialogue.text = string.Empty;
+            txtDialogue.CrossFadeAlpha(0, 2, false);
+            isStopping = true;
             return;
         }
         dt += Time.deltaTime;
         if (dt < duration) return;
+        if (isStopping)
+        {
+            isStopping = false;
+            txtDialogue.text = string.Empty;
+            txtDialogue.CrossFadeAlpha(1, 0, false);
+            dt = 0f;
+            return;
+        }
         dt = 0f;
         txtDialogue.text = content.Substring(0, length + 1);
     }
